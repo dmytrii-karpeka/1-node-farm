@@ -122,6 +122,8 @@ Templates for project can be found in this [folder](./templates/).
 Stylisation is incorporated in those files, so we don't have need to request different files with various formats from server.
 
 Nevertheless, we changed some things in file template.html (now it's [template-product.html](./templates/template-product.html)).
-First things first, we added tags in the followng form **{%PRODUCTNAME%}, {%PRICE%}, {%PRODUCTDESCRIPTION%} etc.
-It will help us later in the course in returning values from JSON object.
+First things first, we added tags in the following form **{%PRODUCTNAME%}, {%PRICE%}, {%PRODUCTDESCRIPTION%} etc.
+
+It will help us later in the course in returning values from JSON object. How we supposed to do this will be discussed later.
+
 
