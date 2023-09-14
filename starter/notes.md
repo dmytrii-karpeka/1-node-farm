@@ -157,3 +157,25 @@ Results:
 
 ![Final overview page with merged html strings from **cardHtml**](./screenshots/overview-templating-result.png)
 
+#### Parsing variables from URLs
+Using *url.parse(url:string, true|false:boolean)* we created 2 vars: **query** and **pathname**.
+
+    Url {
+        ...
+        query: { id: '0' },
+        pathname: '/product'
+        ...
+    }
+
+The final goal for project is achived be doing this:
+
+    // Product page
+    else if (pathname === '/product') {
+        res.writeHead(200, { 'Content-type': 'text/html'});
+        const product = dataObj[query.id];
+        const output = replaceTemplate(tempProduct, product);
+        res.end(output);
+     }
+
+Same as overview we expect plain html from server, then we select product based on query.id key from JSON file that we've read in the top-level.
+
