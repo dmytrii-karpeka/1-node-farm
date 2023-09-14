@@ -124,6 +124,36 @@ Stylisation is incorporated in those files, so we don't have need to request dif
 Nevertheless, we changed some things in file template.html (now it's [template-product.html](./templates/template-product.html)).
 First things first, we added tags in the following form **{%PRODUCTNAME%}, {%PRICE%}, {%PRODUCTDESCRIPTION%} etc.
 
-It will help us later in the course in returning values from JSON object. How we supposed to do this will be discussed later.
+It will help us later in the course in pasting values to template %{PRICE%}, {%DESCRIPTION%}, etc. from JSON object.
 
+#### HTML Templating: Filling the Templates
+In previous lesson we learned how to edit html and writing placeholders for other entities.
+
+Now we read those templates in top-level code in blocking manner:
+
+    const tempOverview = fs.readFileSync(`${__dirname}/templates/template-overview.html`, 'utf-8');
+    const tempCard = fs.readFileSync(`${__dirname}/templates/template-card.html`, 'utf-8');
+    const tempProduct = fs.readFileSync(`${__dirname}/templates/template-product.html`, 'utf-8');
+
+And accessing JSON-file with *dataObj.map()*. Following logic behind:
+
+> For each card object in JSON file substitude in a copy of template-card.html responding placeholders with values of said JSON object.
+
+As a result we receive list of html templates from map callbacks with different values in templates, which we'll use in final overview page.
+
+Final code for overview page: 
+
+    // Overview page
+    if (pathName === '/' || pathName === '/overview') {
+        res.writeHead(200, { 'Content-type': 'text/html'});
+
+        const cardHtml = dataObj.map(el => replaceTemplate(tempCard, el)).join('');
+        // console.log(cardHtml);
+        const output = tempOverview.replace('{%PRODUCT_CARDS%}', cardHtml);
+        res.end(output);
+    } 
+
+Results:
+
+![Final overview page with merged html strings from **cardHtml**](./screenshots/overview-templating-result.png)
 
