@@ -2,9 +2,11 @@
 
 > ***The best way to learn something is to write it down. In this particular paper I'll try to be as short as possible to make nice little notes for future refreshing knowledge.💝 They'll be also very cute tho💫***
 
-### Beginning
+## Section 1: Welcome, Welcome, Welcome!
 
  These lessons provided me with refreshing knowledge about Node.js and structured future lessons. I've got starter files and future project structure, configured my Node.js version and also got used to work with Visual Studio 💙.
+
+## Section 2: Introduction to Node.js and NPM
 
 ### CORE MODULES
 
@@ -179,3 +181,13 @@ The final goal for project is achived be doing this:
 
 Same as overview we expect plain html from server, then we select product based on query.id key from JSON file that we've read in the top-level.
 
+---
+### CREATING OUR OWN MODULES
+
+In JS every single file considered separate module. So we can create our own modules.
+
+#### Export and Require
+
+We added separate dir called *modules* and created [replaceTemplate.js](./modules/replaceTemplate.js).
+Here we pasted replaceTemplate function, so in this way it does not in our main program.
+For adding function to our index.js we used **require**.
