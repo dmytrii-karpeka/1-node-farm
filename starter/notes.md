@@ -191,3 +191,15 @@ In JS every single file considered separate module. So we can create our own mod
 We added separate dir called *modules* and created [replaceTemplate.js](./modules/replaceTemplate.js).
 Here we pasted replaceTemplate function, so in this way it does not in our main program.
 For adding function to our index.js we used **require**.
+
+#### NPM & Types of Packages
+
+Node.js is a package manager. It is kinda of software and library of packages, which can be used in project.
+We created first package.json for purposes of initialising directory as project. That file includes information about project.
+
+We divided development dependencies and regular.
+Project uses regular dependencies on packages to operate.
+Dev-dep are used by developers working on project, e.g. nodemon.
+
+In addition, we've installed nodemon: locally (in project directory) and globally (across whole system). Then we used nodemon package for continious restart of of server, whether we make some changes to files.
+
