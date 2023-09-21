@@ -256,3 +256,33 @@ We've received good foundation for ruther Node.js understanding.
 ---
 
 ### SECTION 3. INTRODUCTION TO BACK-END DEVELOPMENT
+
+#### An overview How Web works
+
+Client sends a request to server and server sends back a response. **This called Request-response model** or **Client-server architecture**.
+
+In 'https://www.google.com/maps' there is several things:
+1. HTTP or HTTPS -- protocol
+2. Google.com -- domain name
+3. Maps -- resource
+
+Google.com **is not** server location. DNS via DNS lookup (like in table) find corresponding to google.com **real** ip-address of server.
+
+Other thing to mention is HTTP Request and Response.
+
+![HTTP Request and HTTP Response](./screenshots/What%20happens%20when%20we%20access%20a%20webpage.jpg)
+
+#### Backend and Frontend
+Frontend - HTML, CSS, JS, React, Redux etc. How site looks in browser.
+Backend - what happens in web-server, not visible to user.
+
+Server - computer connected to internet that has resources and documents.
+
+Browser communicates with HTTP server and server operates files in its system and responds accordingly.
+
+Simple web-server can be called static. All what it does is sending plain HTML files to clients.
+Dynamic web-server is server, which is running and form the app, with access to files.
+
+Database can be used to store users, texts, images and so on.
+
+Server-side is responsible for all functionality of an app. Answering requests and give response, manipulate data in server's computer or mutulate the database. 
