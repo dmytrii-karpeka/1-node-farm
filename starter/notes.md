@@ -286,3 +286,89 @@ Dynamic web-server is server, which is running and form the app, with access to 
 Database can be used to store users, texts, images and so on.
 
 Server-side is responsible for all functionality of an app. Answering requests and give response, manipulate data in server's computer or mutulate the database. 
+
+#### Static vs Dynamic vs API
+
+Static website consist of server, which sends to the client simple resources such as said document (HTML), stylisation (CSS) and animation (JavaScript). Client can not mutulate server information and resources, it can simply access them.
+
+Dynamic website, on the other hand, can provide user with different information each time user access website. Information even can be refreshed due to changes of other users or own server, for e.g. twitter feed.
+
+API is basically programming interface of server, that can be accessed by other programs. API respond with JSON-type file and other program used information in thisd file to fill own templates.
+
+![Difference between static website, dynamic website and API](./screenshots/Dynamic%20vs%20API%20web-sites.jpg)
+
+---
+
+### SECTION 3. HOW NODE.JS WORKS: A LOOK BEHIND THE SCENES
+
+Node runtime has several dependencies V8 and libuv.
+
+V8 is engine that translates JavaScript code into binary machine-readable format acceptable for execution on low-level.
+
+libuv - open-source library that gives node.js an ability to be asyncronous with access to system I/O.
+
+V8 is written with JS and C++.
+libuv is written with C++.
+
+File reading and writting in node.js comes from libuv C++ implementations.
+
+![Node.js architecture](./screenshots/Node.js%20Architecture.jpg)
+
+#### Node process and threads
+
+When we use Node.js it means that there's process running on that computer. And process is a C++ program in execution and it has single *thread*.
+**Node runs in the single thread.**
+No matter whether one user uses server or million of them.
+Expensive tasks can be loaded into thread pool (Thread #1-4). Node does this automatically.
+
+![Node.js process and Threads](./screenshots/Node%20process%20and%20Threads.jpg)
+
+#### Event loop
+
+Node.js process > single thread > event loop
+Some tasks can be loaded into thread pool.
+
+![The nature of Event loop](./screenshots/The%20Event%20loop.jpg)
+
+Event loop consists of:
+
+* all code inside of callback function is handled by it
+* node built around callback function
+* node execute callback when events are emmited
+* event loop does an orchestration: execute easier task, load expensive one to thread pool.
+
+##### Order of execution
+1. When we start Node application event loop starts running.
+2. Event loop has multiple phases and each one has own **callback queue**, which are callbacks coming from the events that event loop receives.
+3. There is not one callback queue, there is several of them.
+
+The phases of Node.js Event loop and there respective queues:
+1. Expired timer callbacks (setTimeout()). 
+2. I/O polling and callbacks. Looking for I/O events, file access
+3. setImmediate callbacks. Process callbacks immediately after I/O polling.
+4. Close callbacks. All close events are processed. E.g. when server shut down.
+
+There is other queues:
+1. Process.nexttick() queue.
+2. Other microtasks queue (resolved promises)
+3. Promise callbacks queue will be executed between previous phases.
+
+If there're any timers or I/O pending then event loop will start over.
+
+> When we listening for incoming HHTP request we running I/O task and that is why event loop keep running and listening and don't stop.
+
+![Event loop in detail](./screenshots/Event%20loop%20in%20detail.jpg)
+
+Event loop is what makes asyncronous design possible!
+In Node.js everything works in same thread. It gives possible to scale app without dependence on computer resources, but comes with a great cost: some processes can be block execution of other part of program, therefore you need to be precise with code and heavy functions.
+
+What can block thread from further execution:
+
+* sync version of functions in fs, crypto and zlib modules in callback functions
+* complex calculations (e.g. loops inside loops)
+* need to be careful with JSON in large objects
+* complex regular expressions (e.g. nested quantifiers)
+
+
+
+
