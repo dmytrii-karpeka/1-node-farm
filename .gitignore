@@ -1,5 +1,4 @@
 /final
-starter/node_modules/*
 .vscode
 theory
 /2-how-node-works/final
@@ -16,6 +15,7 @@ theory
 /4-natours/after-section-12
 /4-natours/after-section-13
 /4-natours/after-section-14
+/4-natours/starter/node_modules
 /1-node-farm/starter/node_modules
 /3-asynchronous-JS/starter/node_modules
 /1-node-farm/final

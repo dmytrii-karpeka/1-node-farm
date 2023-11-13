@@ -470,3 +470,38 @@ We waited till finishing getDogPicture() (because it's also asynchronous functio
 Without await step #2 would be displayed in the end, after 1&3, because of nature of event loop.
 
 ## SECTION 6: BUILDING API WITH EXPRESS.JS 
+
+#### What is Express?
+
+Express -- is a minimal node.js framework, a higher level of abstraction.
+Express contains a very robust set of features: complex routing, easier handling of requests and responses, middleware, server-side rendering, etc.
+Express allows for rapid development.
+Express makes easier to organize app into MVC pattern.
+
+#### What is Postman
+
+Tool for simplification of API testing.
+It allows send requests to url and get responses without need to open url in browser and testing it manually.
+
+#### REST API Desing
+Application Programming Interface is a piece of software that allows different programs to utilize each other.
+REST - representational state transfer is way of building APIs.
+Principles:
+1. Separate API into logical resources
+2. Expose strucutred, resource-based URLs
+3. Use HTTP methods (verbs)
+4. Send data as JSON
+5. Be stateless
+
+Logical **resource** is a key abstraction in REST API development. Object ot representation of something which has data associated to it. Any information that can be named can be a resource. Statement refers to 1st principle.
+
+![The REST architecture](./screenshots/REST%20resources.jpg)
+
+HTTP methods (verbs) should be used alongside corresponding resource. This way developer creates meaningful endpoints.
+
+For example: POST /toors (instead separate /addNewTour)
+
+Be stateless: the server should not remember previous requests in order to process current request.
+
+All state is handled on the client. Example: loggedIn, currentPage.
+
