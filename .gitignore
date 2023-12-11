@@ -8,6 +8,7 @@ theory
 /README.md
 /theory-lectures.pdf
 /vscode-setup.md
+/node_modules
 /4-natours/after-section-09
 /4-natours/after-section-08
 /4-natours/after-section-10
@@ -15,7 +16,7 @@ theory
 /4-natours/after-section-12
 /4-natours/after-section-13
 /4-natours/after-section-14
-/4-natours/starter/node_modules
-/1-node-farm/starter/node_modules
-/3-asynchronous-JS/starter/node_modules
+/4-natours/starter/node_modules/*
+/1-node-farm/starter/node_modules/*
+/3-asynchronous-JS/starter/node_modules/*
 /1-node-farm/final
