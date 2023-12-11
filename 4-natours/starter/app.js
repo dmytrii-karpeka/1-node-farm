@@ -160,18 +160,25 @@ const tours = JSON.parse(
 
 // Routes
 
-app.route('/api/v1/tours').get(getAllTours).post(createTour);
+// Mounting of routes
+const tourRouter = express.Router();
+const userRouter = express.Router();
 
-app
-  .route('/api/v1/tours/:id')
+app.use('/api/v1/tours', tourRouter);
+app.use('/api/v1/users', userRouter);
+
+tourRouter.route('/').get(getAllTours).post(createTour);
+
+tourRouter
+  .route('/:id')
   .get(getTour)
   .patch(updateTour)
   .delete(deleteTour);
 
-app.route('/api/v1/users').get(getAllUsers).post(createUser);
+app.route('/').get(getAllUsers).post(createUser);
 
 app
-  .route('/api/v1/users/:id')
+  .route('/:id')
   .get(getUser)
   .patch(updateUser)
   .delete(deleteUser);
